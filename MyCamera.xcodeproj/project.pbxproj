@@ -12,6 +12,7 @@
 		225799EB21234FF600ED28E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225799E921234FF600ED28E7 /* Main.storyboard */; };
 		225799ED21234FF600ED28E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225799EC21234FF600ED28E7 /* Assets.xcassets */; };
 		225799F021234FF600ED28E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225799EE21234FF600ED28E7 /* LaunchScreen.storyboard */; };
+		22F407D52123F25D00603085 /* EffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F407D42123F25D00603085 /* EffectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		225799EC21234FF600ED28E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225799EF21234FF600ED28E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225799F121234FF600ED28E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22F407D42123F25D00603085 /* EffectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				225799E521234FF600ED28E7 /* AppDelegate.swift */,
 				225799E721234FF600ED28E7 /* ViewController.swift */,
 				225799E921234FF600ED28E7 /* Main.storyboard */,
+				22F407D42123F25D00603085 /* EffectViewController.swift */,
 				225799EC21234FF600ED28E7 /* Assets.xcassets */,
 				225799EE21234FF600ED28E7 /* LaunchScreen.storyboard */,
 				225799F121234FF600ED28E7 /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				225799E821234FF600ED28E7 /* ViewController.swift in Sources */,
 				225799E621234FF600ED28E7 /* AppDelegate.swift in Sources */,
+				22F407D52123F25D00603085 /* EffectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

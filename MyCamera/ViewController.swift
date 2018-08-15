@@ -95,10 +95,26 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     // 撮影終了後に呼ばれるメソッド
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        // 撮影した写真を配置したpictureImageに渡す
-        pictureimage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        // モーダルビューを閉じる
-        dismiss(animated: true, completion: nil)
+//        // 撮影した写真を配置したpictureImageに渡す
+//        pictureimage.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        // モーダルビューを閉じる
+//        dismiss(animated: true, completion: nil)
+        captureImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        dismiss(animated: true, completion: {
+            self.performSegue(withIdentifier: "showEffectView", sender: nil)
+        })
+    }
+    
+    // 次の画面遷移するときにわやす画像を格納する場所
+    var captureImage : UIImage?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //次の画面インスタンスを格納
+        if let nextViewController = segue.destination as? EffectViewController {
+            // 次の画面のインスタンスに取得した画像を渡す
+            nextViewController.originalImage = captureImage
+        }
     }
 }
 
