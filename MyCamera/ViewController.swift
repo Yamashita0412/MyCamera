@@ -24,24 +24,73 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var pictureimage: UIImageView!
     
     @IBAction func cameraButtonAction(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            print("カメラは利用できます")
-            
-            // UIImagePickerControllerインスタンス作成
-            let imagePickerController = UIImagePickerController()
-            // sourceTypeにCameraを設定
-            imagePickerController.sourceType = .camera
-            // delegate設置
-            imagePickerController.delegate = self
-            // モーダルビューで表示
-            present(imagePickerController, animated: true, completion: nil)
-        } else {
-            print("カメラは利用できません。")
+        
+        // カメラかフォトライブラリーどちらから画像を取得するか選択
+        let alertController = UIAlertController(title: "確認", message: "選択してください", preferredStyle: .actionSheet)
+        
+//        // カメラを起動するための選択肢を定義
+//        let cameraAction = UIAlertAction(title: "カメラ", style: .default, handler: nil)
+//        alertController.addAction(cameraAction)
+//
+//        // フォトライブラリーを起動するための選択肢を定義
+//        let photoAction = UIAlertAction(title: "フォトギャラリー", style: .default, handler: nil)
+//        alertController.addAction(photoAction)
+        
+        // カメラが利用可能かチェック
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            // カメラが起動するための選択肢を定義
+            let cameraAction = UIAlertAction(title: "カメラ", style: .default, handler: { (action:UIAlertAction) in
+                // カメラ起動
+                let imagePickerController : UIImagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .camera
+                imagePickerController.delegate   = self
+                self.present(imagePickerController, animated: true, completion: nil)
+            })
+            alertController.addAction(cameraAction)
         }
+        
+        // フォトライブラリーが利用可能かチェック
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            // フォトライブラリーをが起動するための選択肢を定義
+            let photoAction = UIAlertAction(title: "フォトライブラリー", style: .default, handler: { (action:UIAlertAction) in
+                //フォトライブラリーを起動
+                let imagePickerController : UIImagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .photoLibrary
+                imagePickerController.delegate = self
+                self.present(imagePickerController, animated: true, completion: nil)
+            })
+            alertController.addAction(photoAction)
+
+        }
+        
+        // キャンセルの選択肢を定義
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        // iPadで落ちてしまう対策
+        alertController.popoverPresentationController?.sourceView = view
+        
+        // 選択肢を画面に表示
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func SNSButtonAction(_ sender: Any) {
-    
+        
+        // 表示画像をアンラップしてシェア画像として取り出し
+        if let shareImage = pictureimage.image {
+            // UIActivityViewControllerに渡す配列を作成
+            let shareItems = [shareImage]
+            
+            // UIActivityViewControllerにシェア画像を渡す
+            let controller = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+            
+            // iPadで落ちてしまう対策
+            controller.popoverPresentationController?.sourceView = view
+            
+            // UIActivityViewControllerを表示
+            present(controller, animated: true, completion: nil)
+            
+        }
     }
     
     // 撮影終了後に呼ばれるメソッド

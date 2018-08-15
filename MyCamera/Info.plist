@@ -26,6 +26,8 @@
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>フォトライブラリーに保存します。</string>
 	<key>NSCameraUsageDescription</key>
 	<string>use camera</string>
 	<key>UISupportedInterfaceOrientations</key>
